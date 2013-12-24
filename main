@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/buttons.css">
+		<script src="js/moo/core.js"></script>
+		<script src="js/moo/more.js"></script>
+		<script src="js/io/file.system.js"></script>
+		<script src="js/interface/buttons.js"></script>
+		<script src="js/classes/pila.js"></script>
+		<script src="js/classes/elementoPila.js"></script>
+		<script src="js/classes/nodo.js"></script>
+		<script src="js/classes/simbolos.js"></script>
+		<script src="js/classes/analizadorLexico.js"></script>
+		<script src="js/classes/analizadorSintacticoLR.js"></script>
+		<script src="js/main.js"></script>
+		<title>:: Compilador - Jose Manuel Vargas Navarro ::</title>
+	</head>
+	<body>
+	</body>
+</html>
