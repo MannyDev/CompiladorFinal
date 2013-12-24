@@ -4,7 +4,7 @@
     "main": "main",
     "window": {
         "toolbar": false,
-        "frame": true,
+        "frame": false,
         "width": 1000,
         "min_width": 1000,
         "height": 350,
