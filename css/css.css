@@ -1,32 +1,73 @@
 #izquierda {
-background-color: #0A0A0A;
-position: absolute;
-top: 60;
-width: 300;
-left: 0;
-bottom: 0;
-
-border-top: solid 1px #181818;
-box-shadow: 0px -2px 0px #000;
-
+	background-color: #0A0A0A;
+	position: absolute;
+	top: 60;
+	width: 300;
+	left: 0;
+	bottom: 27;
+	border-top: solid 1px #181818;
+	box-shadow: 0px -2px 0px #000;
 }
 
+#top {
+	background: -webkit-linear-gradient(top, #252525 0%,#0E0E0E 100%);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60;
+	border-top: solid 1px #303030;
+	-webkit-app-region: drag;
+	cursor: default;
+	text-align: right;
+}
+
+#status-bar {
+	background: -webkit-linear-gradient(top,#1D1D1D 0%, #242424 100%);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 25;
+	border-top: solid 1px #303030;
+	z-index: 10;
+}
 
 body {
-
 	margin: 0px;
-        overflow: hidden;
-        	background-color: #050505;
-
-    }
+	overflow: hidden;
+	background-color: #050505;
+}
     
 #editor {
-margin: 0;
-position: absolute;
-top: 60;
-bottom: 0;
-left: 300;
-right: 0;
-
-
+	margin: 0;
+	position: absolute;
+	top: 60;
+	bottom: 27;
+	left: 300;
+	right: 0;
 }
+
+.boton_m {
+	background: -webkit-linear-gradient(top, #202020 0%,#000000 100%);
+	border: solid 2px #000000;
+	border-radius: 30px;
+	padding: 9px;
+	margin: 10px 10px 10px 0px;
+	cursor: pointer;
+	box-shadow: inset 0px 1px 2px #303030;
+}
+
+#boton_m2 {
+	background: -webkit-linear-gradient(top, #353535 0%,#1A1A1A 100%);
+	border: solid 1px #000000;
+	border-radius: 30px;
+	padding: 9px;
+	margin: 10px 0px 10px 10px;
+	cursor: pointer;
+}
+
+.boton_m:active {
+	background: -webkit-linear-gradient(top,#000000 0%, #242424 100%);
+}
+

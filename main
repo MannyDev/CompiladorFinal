@@ -5,7 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 		<link rel="stylesheet" href="css/css.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/buttons.css">
+
 
 		<script src="editor/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/moo/core.js"></script>
@@ -22,24 +24,9 @@
 		<title>:: Compilador - Jose Manuel Vargas Navarro ::</title>
 	</head>
 	<body>
-	<div id="izquierda"></div>
-		
-<pre id="editor">
-
-#include <stdio.h>
-
-int main ()
-{
-    int a, b=3; /* foobar */
-    a = b;
-    a+=2; // equivalent to a=a+2
-    #if VERBOSE >= 2
-        prints("trace message");
-    #endif
-    return 0;
-}
-
-</pre>
-
+		<div id="top"></div>		
+		<div id="izquierda"></div>
+		<pre id="editor"></pre>
+		<div id="status-bar"></div>
 	</body>
 </html>
