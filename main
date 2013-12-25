@@ -24,8 +24,11 @@
 		<title>:: Compilador - Jose Manuel Vargas Navarro ::</title>
 	</head>
 	<body>
-		<div id="top"></div>		
-		<div id="izquierda"></div>
+		<div id="top">
+			<input style="display:none;" id="open" type="file" accept=".c,.cpp" />
+			<input style="display:none;" id="save" type="file" accept=".c" nwsaveas/>
+		</div>		
+		<div id="consola"></div>
 		<pre id="editor"></pre>
 		<div id="status-bar"></div>
 	</body>

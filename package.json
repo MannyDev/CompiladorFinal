@@ -5,8 +5,8 @@
     "window": {
         "toolbar": false,
         "frame": false,
-        "width": 1000,
-        "min_width": 1000,
+        "width": 800,
+        "min_width": 734,
         "height": 550,
         "min_height": 550,
         "position": "center"

@@ -53,48 +53,152 @@ main = function() {
     var pegar = new ButtonBar("clipboard_past_icon","Pegar");
 
     var consola = new ButtonBar("app_window_black_icon","Consola");
-    var cerrar = new ButtonBar("delete_icon","Cerrar");
+    var maximiza = new ButtonWindow("round_plus_icon","Maximizar");
+    var minimiza = new ButtonWindow("round_minus_icon","Minimiza");
+    var cerrar = new ButtonWindow("round_delete_icon","Cerrar");
 
     nuevo.inject("top");
     abrir.inject("top");
     guardar.inject("top");
+ 
     separador().inject("top");
+ 
     compilar.inject("top");
     ejecutar.inject("top");
+ 
     separador().inject("top");
+ 
     copiar.inject("top");
     pegar.inject("top");
+ 
     separador().inject("top");
+ 
     consola.inject("top");
-    cerrar.inject("top");
+
+    separador().inject("top");
+ 
+    minimiza.inject("top");
+    maximiza.inject("top");
+    cerrar.inject("top").setStyle("margin-right",20);
 
     /* Eventos */
+
+    abrir.addEvent("click", fn.open);
+    $("open").addEvent("change", fn.open);
+    guardar.addEvent("click", fn.save);
+    $("save").addEvent("change", fn.save);
+    nuevo.addEvent("click", fn.nuevo);
 
     copiar.addEvent("click", fn.copiar);
     pegar.addEvent("click", fn.pegar);
 
     consola.addEvent("click", fn.consola);
+    maximiza.addEvent("click", fn.maximiza);
+    minimiza.addEvent("click", fn.minimiza);
     cerrar.addEvent("click", fn.cerrar);
 
 };
 
 var fn = {
 
-    pegarFn: function(){
+    file: "",
+
+    pegar: function(){
         editor.insert(gui.Clipboard.get().get());
     },
 
-    copiarFn: function(){
+    copiar: function(){
         if (editor.getSelectedText().length == 0) return;
         else gui.Clipboard.get().set(editor.getSelectedText());
     },
 
-    consolaFn: function(){
+    consola: function(){
         win.showDevTools();
     },
 
-    cerrarFn: function(){
+    cerrar: function(){
         win.close();
+    },
+
+    open: function(e){
+
+        editor.focus();
+
+
+        if(e.type == "click"){
+            document.id("open").click();
+            return;
+        }
+
+        if(e.type == "change" && $("open").value != ""){
+
+            fn.file = $("open").value;
+
+            var c = new FileReader(fn.file); 
+                editor.setValue(c.readText());
+                editor.gotoLine(0,0);
+
+            $("open").value = "";
+
+        }
+    },
+
+    save: function(e){
+        
+        editor.focus();
+
+        if(e.type == "click"){
+
+            console.log(fn.file == $("open").value, fn.file, $("open").value)
+
+            if(fn.file != ""){
+                var c = new FileWriter(fn.file); 
+                    c.replace(editor.getValue());
+            } else document.id("save").click();
+
+            return;
+
+        }
+
+        if(e.type == "change"){
+
+            fn.file = this.value;
+
+            var folders = fn.file;
+                folders = folders.split(path.sep);
+
+            var nombre_archivo = folders.pop();
+                nombre_archivo = nombre_archivo.test(/.+\.c/) ? nombre_archivo : nombre_archivo + ".c";
+
+                folders.push(nombre_archivo);
+
+                fn.file = folders.join(path.sep)
+
+            var c = new FileWriter(fn.file); 
+                c.replace(editor.getValue());
+
+        }
+
+    },
+
+    nuevo: function(){
+        document.id("open").value = "";
+        document.id("save").value = "";
+        editor.setValue("");
+        fn.file = "";
+        editor.focus();
+    },
+    
+    saveAs: function(){
+
+    },
+
+    maximiza: function(){
+        win.maximize();
+    },
+
+    minimiza: function(){
+        win.minimize();
     }
 }
 

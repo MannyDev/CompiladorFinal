@@ -27,6 +27,31 @@ var ButtonBar = new Class({
 
 })
 
+var ButtonWindow = new Class({
+
+    Extends: Elements, // hereda todos los metodos de un Elemento
+
+    initialize: function(value, alt){
+        var x = new Element("button",{
+            class: "boton_w",
+            alt: alt,
+            title: alt
+        });
+
+        x.adopt(new Element("img", {
+            src: "img/icons/"+value+"&16.png",
+            alt: alt,
+            title: alt,
+            styles: {
+                opacity: 0.7
+            }
+        }))
+
+        return x;
+    } 
+
+})
+
 var BlueButton = new Class({
     
         Extends: Elements, // hereda todos los metodos de un Elemento

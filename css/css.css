@@ -1,51 +1,58 @@
-#izquierda {
-	background-color: #0A0A0A;
-	position: absolute;
-	top: 60;
-	width: 300;
-	left: 0;
-	bottom: 27;
-	border-top: solid 1px #181818;
-	box-shadow: 0px -2px 0px #000;
+#consola {
+background-color: #161616;
+position: absolute;
+height: 151;
+right: 0;
+left: 0;
+bottom: 27;
+border-top: solid 1px #222222;
+box-shadow: 0px -1px 0px #000000;
+-webkit-user-select: none;
+
 }
 
+
 #top {
-	background: -webkit-linear-gradient(top, #252525 0%,#0E0E0E 100%);
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 60;
-	border-top: solid 1px #303030;
-	-webkit-app-region: drag;
-	cursor: default;
-	text-align: right;
+background: -webkit-linear-gradient(top, #222222 0%,#131313 100%);
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 58;
+border-top: solid 1px #363636;
+-webkit-app-region: drag;
+cursor: default;
+text-align: right;
+border-bottom: solid 1px #000;
 }
 
 #status-bar {
-	background: -webkit-linear-gradient(top,#1D1D1D 0%, #242424 100%);
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 25;
-	border-top: solid 1px #303030;
-	z-index: 10;
+background: -webkit-linear-gradient(top,#161616 0%, #0E0E0E 100%);
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+height: 25;
+border-top: solid 1px #252525;
+z-index: 10;
+-webkit-user-select: none;
 }
 
 body {
 	margin: 0px;
 	overflow: hidden;
 	background-color: #050505;
+	-webkit-user-select: none;
+
 }
-    
+
 #editor {
-	margin: 0;
-	position: absolute;
-	top: 60;
-	bottom: 27;
-	left: 300;
-	right: 0;
+margin: 0;
+position: absolute;
+top: 60;
+bottom: 180;
+left: 0;
+right: 0;
 }
 
 .boton_m {
@@ -56,6 +63,17 @@ body {
 	margin: 10px 10px 10px 0px;
 	cursor: pointer;
 	box-shadow: inset 0px 1px 2px #303030;
+	-webkit-app-region:no-drag;
+}
+
+.boton_w {
+background: transparent;
+border: none;
+padding: 2px;
+margin: 10px 3px;
+cursor: pointer;
+	-webkit-app-region:no-drag;
+
 }
 
 #boton_m2 {

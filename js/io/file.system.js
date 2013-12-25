@@ -1,7 +1,7 @@
 ﻿var fs = require("fs");
 var gui = require('nw.gui');
 var win = gui.Window.get();
-
+var path = require("path");
 
 var FileReader = new Class({
     initialize: function(archivo) {
