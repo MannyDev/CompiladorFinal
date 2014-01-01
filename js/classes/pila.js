@@ -3,24 +3,20 @@
      lista: new Array(),
 
      Push: function(x) {
-         console.log("antes de push: ", this.lista);
          this.lista.push(x);
-         console.log("despues de push: ", this.lista);
-
      },
 
      Peek: function() {
-         console.log("tope: ", this.lista.getLast());
          return this.lista.getLast();
      },
 
      Pop: function() {
-         console.log("antes de pop: ", this.lista);
-
          var x = this.lista.pop();
-         console.log("despues de pop: ", this.lista);
-
          return x;
+     },
+
+     Clear: function() {
+         this.lista.empty();
      },
 
      Muestra: function(s) {

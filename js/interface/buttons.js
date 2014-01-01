@@ -43,7 +43,7 @@ var ButtonWindow = new Class({
             alt: alt,
             title: alt,
             styles: {
-                opacity: 0.7
+                opacity: 1
             }
         }))
 

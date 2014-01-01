@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<SyntaxDefinition name = "C" extensions = ".c">
+  <Digits name = "Digitos" bold = "true" italic = "false" color = "DarkBlue"/>
+  <RuleSets>
+    <RuleSet ignorecase = "false">
+      <Delimiters>&amp;&lt;&gt;~!%^*()-+=|\#/{}:;"' , .?</Delimiters>
+      <Span name = "String" bold = "false" italic = "false" color = "Red" stopateol = "true">
+        <Begin>"</Begin>
+        <End>"</End>
+      </Span>
+      <KeyWords name = "PalabrasReservadas" bold="true" italic="false" color="Blue">
+        <Key word = "void" />
+        <Key word = "int" />
+        <Key word = "float" />
+        <Key word = "string" />
+        <Key word = "if" />
+        <Key word = "else" />
+        <Key word = "while" />
+        <Key word = "return" />
+      </KeyWords>
+    </RuleSet>
+  </RuleSets>
+</SyntaxDefinition>

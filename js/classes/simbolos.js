@@ -1,12 +1,12 @@
-var Simbolo = {
+var Simbolos = {
 
     ERROR: -1,
     IDENTIFICADOR: 0,
-    ENTERO: 100,
-    REAL: 200,
+    ENTERO: 1,
+    REAL: 2,
     CADENA: 3,
     TIPO: 4, //int, float void
-    OPERADOR_ADICION: 1000, //1, //+, -
+    OPERADOR_ADICION: 5, //1, //+, -
     OPERADOR_MULTIPLICACION: 6, //*, /
     OPERADOR_RELACIONAL: 7, //<, <=, >, >=
     OPERADOR_OR: 8, //||
@@ -24,7 +24,7 @@ var Simbolo = {
     WHILE: 20,
     RETURN: 21,
     ELSE: 22,
-    PESOS: 1,//2,
+    PESOS: 23,
 
     ToString: function(simbolo) {
         switch (simbolo) {
@@ -32,7 +32,7 @@ var Simbolo = {
                 return "Identificador";
             case this.ENTERO:
                 return "Entero";
-            case Simbolo.REAL:
+            case this.REAL:
                 return "Real";
             case this.CADENA:
                 return "Cadena";
