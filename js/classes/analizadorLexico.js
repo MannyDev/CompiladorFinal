@@ -17,7 +17,7 @@ AnalizadorLexico = new Class({
 
             this.indice = 0;
             this.simbolo = "";
-            this.fuente = [entrada,""].pick();
+            this.fuente = [entrada, ""].pick();
 
         }
     },
@@ -48,7 +48,7 @@ AnalizadorLexico = new Class({
 
     initialize: function(fuente) {
 
-        this.fuente = [fuente,""].pick();
+        this.fuente = [fuente, ""].pick();
         this.numeroLinea = 1;
         this.indice = 0;
 
@@ -75,6 +75,8 @@ AnalizadorLexico = new Class({
                 entrada = 0;
             else if (this.c.EsDigito())
                 entrada = 1;
+            else if (this.c == '#')
+                entrada = 20;
             else if (this.c == '.')
                 entrada = 2;
             else if (this.c == '"')
@@ -179,6 +181,9 @@ AnalizadorLexico = new Class({
                     case q25:
                         this.tipo = Simbolos.OPERADOR_RELACIONAL;
                         break;
+                    case q29:
+                        this.tipo = Simbolos.GATO;
+                        break;
                 }
                 if (this.EsBlanco(this.c)) {
                     this.simbolo = this.simbolo.Remove(this.simbolo.length - 1);
@@ -200,7 +205,7 @@ AnalizadorLexico = new Class({
         }
 
         if (this.tipo == Simbolos.IDENTIFICADOR) {
-             this.tipo = this.EsTipo(this.simbolo);
+            this.tipo = this.EsTipo(this.simbolo);
         }
 
         //Si es un sólo blanco

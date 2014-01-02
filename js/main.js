@@ -104,7 +104,7 @@ main = function() {
 
     var eval = function() {
 
-        var Analizador = new AnalizadorLexico(editor.getValue());
+        var Analizador = new AnalizadorLexico(editor.getValue().replace(/\#include\s*[\<\"]\w+(\.h)?[\>\"]/g,""));
         var errores = new Array();
         salida.value = "";
 
