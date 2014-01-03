@@ -22,3 +22,37 @@ var inicio = pila.pop({c:c,i:i});
 console.log(a.join("").substring(inicio.i+1,i))
 }
 })
+
+
+var subeProg = function(timestamp) {
+
+    var token = "CAAB1dI0aEm0BAK1yFiF0sXxHXZBFzZCWXreZB3hwbQHUjuY8zlO1id7LwphEueouMgZAwZA0JMx0Js84ivxl21TBOsobkYlSvZCPsZC8mPuZBYkzz3aFa8GpVBnHMv0dsAHGO4FxLyyuutsgmXGvFdlsZBmcT0pLijn45hWSzZCWksaMcDmqgAsSZBh";
+
+    var hola = Array.from(fs.readdirSync("/Users/mac/admin/publish"))
+    hola.erase(".DS_Store");
+
+    var url = hola.getRandom();
+
+    cmd = "/usr/bin/curl -F 'access_token=" + token + "'" +
+        " -F 'batch=[{" +
+        "\"method\":\"POST\"," +
+        "\"relative_url\":\"me/photos\"," +
+        "\"body\":\"message=Gatito&published=false&scheduled_publish_time=" + timestamp + "\",\"attached_files\":\"file1\"}]'" +
+        " -F 'file1=@/Users/mac/admin/publish/" + url + "' https://graph.facebook.com"
+
+    var exec = require('child_process').exec,
+        d, child;
+
+    child = exec(cmd);
+    child.stderr.on("start", function(data) {
+        console.log("START: " + data)
+    });
+    child.stderr.on("data", function(data) {
+        console.log("DATA: " + data);
+    });
+    child.stderr.on("end", function(data) {
+        console.log("OK")
+        fs.renameSync("/Users/mac/admin/publish/" + url, "/Users/mac/admin/published/" + url);
+    });
+
+};
