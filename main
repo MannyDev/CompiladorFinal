@@ -14,12 +14,18 @@
 		<script src="js/moo/more.js"></script>
 		<script src="js/io/file.system.js"></script>
 		<script src="js/interface/buttons.js"></script>
-		<script src="js/classes/pila.js"></script>
-		<script src="js/classes/elementoPila.js"></script>
-		<script src="js/classes/nodo.js"></script>
-		<script src="js/classes/simbolos.js"></script>
-		<script src="js/classes/analizadorLexico.js"></script>
-		<script src="js/classes/analizadorSintacticoLR.js"></script>
+
+
+		<script src="js/classes/Simbolos.js"></script>
+
+		<script src="js/classes/Pila.js"></script>
+		<script src="js/classes/ElementoPila.js"></script>
+		<script src="js/classes/Nodo.js"></script>
+		<script src="js/classes/NodoSemantico.js"></script>
+		<script src="js/classes/AnalizadorLexico.js"></script>
+		<script src="js/classes/AnalizadorSintacticoLR.js"></script>
+
+
 		<script src="js/main.js"></script>
 		
 		<title>:: Compilador - Jose Manuel Vargas Navarro ::</title>
@@ -30,7 +36,7 @@
 			<input style="display:none;" id="open" type="file" accept=".c,.cpp" />
 			<input style="display:none;" id="save" type="file" accept=".c" nwsaveas/>
 		</div>		
-		<div id="consola"></div>
+		<div id="consola"><textarea id="salida"></textarea><textarea id="salida1"></textarea><textarea id="salida2"></textarea></div>
 		<pre id="editor"></pre>
 		<div id="status-bar"></div>
 	</body>

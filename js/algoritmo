@@ -1,0 +1,24 @@
+var pilaSemantica = new Array();
+
+cadena = editor.getValue()
+cadena2 = cadena.replace(/".+"/g,"\"\"");
+
+cadena2.count("{")
+}).length == cadena2.filter(function(c){
+ return c == "}"
+}).length
+
+cadena2.filter(function(c){
+ return c == "("
+}).length == cadena2.filter(function(c){
+ return c == ")"
+}).length
+
+cadena2.split("").each(function(c,i,a){
+
+if(c=="{") pila.push({c:c,i:i});
+if(c=="}") {
+var inicio = pila.pop({c:c,i:i});
+console.log(a.join("").substring(inicio.i+1,i))
+}
+})
