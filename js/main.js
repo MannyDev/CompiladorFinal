@@ -39,12 +39,14 @@ main = function() {
     win.title = "Compilador final";
 
     window.editor = ace.edit("editor");
-//    editor.setTheme("ace/theme/xcode");
+    //    editor.setTheme("ace/theme/xcode");
     editor.setTheme("ace/theme/clouds_midnight");
     editor.getSession().setMode("ace/mode/c_cpp");
     editor.setShowPrintMargin(false);
 
     var salida = document.id("salida");
+    var salida1 = document.id("salida1");
+    var salida2 = document.id("salida2");
 
     var abrir = new ButtonBar("folder_open_icon", "Abrir archivo");
     var nuevo = new ButtonBar("doc_new_icon", "Nuevo archivo");
@@ -104,9 +106,11 @@ main = function() {
 
     var eval = function() {
 
-        var Analizador = new AnalizadorLexico(editor.getValue().replace(/\#include\s*[\<\"]\w+(\.h)?[\>\"]/g,""));
+        var Analizador = new AnalizadorLexico(editor.getValue().replace(/\#include\s*[\<\"]\w+(\.h)?[\>\"]/g, ""));
         var errores = new Array();
         salida.value = "";
+        salida1.value = "";
+        salida2.value = "";
 
         while (Analizador.simbolo != "$") {
             Analizador.SigSimbolo();
@@ -121,9 +125,18 @@ main = function() {
             }
 
             salida.value += Analizador.simbolo + "\t\t " + Simbolos.ToString(Analizador.tipo) + "\n";
+            salida1.value += Analizador.simbolo + "\t\t " + Simbolos.ToString(Analizador.tipo) + "\n";
+            salida2.value += Analizador.simbolo + "\t\t " + Simbolos.ToString(Analizador.tipo) + "\n";
         }
 
         editor.getSession().setAnnotations(errores);
+
+        if (errores.length > 0) return;
+
+        var Analizador = new AnalizadorSintacticoLR(editor.getValue());
+        
+        // if(Analizador.start().type == "error")
+        //     console.log("error");
 
     };
 

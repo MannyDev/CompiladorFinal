@@ -34,7 +34,7 @@
 			<input style="display:none;" id="open" type="file" accept=".c,.cpp" />
 			<input style="display:none;" id="save" type="file" accept=".c" nwsaveas/>
 		</div>		
-		<div id="consola"><textarea id="salida"></textarea></div>
+		<div id="consola"><textarea id="salida"></textarea><textarea id="salida1"></textarea><textarea id="salida2"></textarea></div>
 		<pre id="editor"></pre>
 		<div id="status-bar"></div>
 	</body>

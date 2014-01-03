@@ -1,10 +1,9 @@
 var pilaSemantica = new Array();
 
 cadena = editor.getValue()
-cadena2 = cadena.replace(/".+"/g,"\"\"").split("")
+cadena2 = cadena.replace(/".+"/g,"\"\"");
 
-cadena2.filter(function(c){
- return c == "{"
+cadena2.count("{")
 }).length == cadena2.filter(function(c){
  return c == "}"
 }).length
@@ -15,7 +14,7 @@ cadena2.filter(function(c){
  return c == ")"
 }).length
 
-cadena2.each(function(c,i,a){
+cadena2.split("").each(function(c,i,a){
 
 if(c=="{") pila.push({c:c,i:i});
 if(c=="}") {

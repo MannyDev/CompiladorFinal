@@ -21,9 +21,6 @@ var AnalizadorSintacticoLR = new Class({
     //Tabla de la grámatica
     tabla: null,
 
-    /// <summary>
-    /// Obtiene o modifica la entrada que se usa en el análisis
-    /// </summary>
     Entrada: {
         get: function() {
             return entrada;
@@ -46,6 +43,9 @@ var AnalizadorSintacticoLR = new Class({
 
         if (!this.CargaArreglosYTabla())
             alert("Ocurrio un error al cargar los datos");
+
+        this.start();
+
     },
 
     //================================================================================
@@ -93,7 +93,7 @@ var AnalizadorSintacticoLR = new Class({
                         break;
                     }
 
-                    int regla = -(this.accion + 2);
+                    var regla = -(this.accion + 2);
 
                     switch (regla + 1) {
                         case 1: //<programa> ::= <Definiciones>
@@ -190,7 +190,7 @@ var AnalizadorSintacticoLR = new Class({
                         case 30: //<ValorRegresa> ::= <Expresion>
                             this.pila.Pop();
                             var valorRegresar = new NodoSemantico("<ValorRegresa>");
-                            valorRegresar.Añ adirHijo(this.pila.Pop().Nodo);
+                            valorRegresar.AñadirHijo(this.pila.Pop().Nodo);
                             valorRegresar.NumeroLinea = (valorRegresar.Hijos[0]).NumeroLinea;
                             this.nodo = valorRegresar;
                             break;
@@ -265,7 +265,7 @@ var AnalizadorSintacticoLR = new Class({
                             break;
                         default:
                             //Sacamos de la pila el doble de elementos de la regla de reducción
-                            for (int i = 0; i < this.lonReglas[regla] * 2; i++)
+                            for (var i = 0; i < this.lonReglas[regla] * 2; i++)
                                 this.pila.Pop();
                             break;
                     }
@@ -290,6 +290,46 @@ var AnalizadorSintacticoLR = new Class({
         }
     },
 
+
+    start: function() {
+
+        var pilaSemantica = new Array();
+        var errores = new Array();
+
+        cadena = editor.getValue();
+        cadena2 = cadena.replace(/".+"/g, "\"cadena\"");
+
+        if (cadena2.count("\\(") == cadena2.count("\\)")) {
+            errores.push({
+                state: "error",
+                message: "Desequilibrio de parentesis"
+            });
+        }
+
+        if (cadena2.count("{") == cadena2.count("}")) {
+            errores.push({
+                state: "error",
+                message: "Desequilibrio de llaves"
+            });
+        }
+
+        cadena2.split("").each(function(c, i, a) {
+
+            if (c == "{") {
+                pilaSemantica.push({
+                    c: c,
+                    i: i
+                });
+            } else if (c == "}") {
+                var inicio = pilaSemantica.pop({
+                    c: c,
+                    i: i
+                });
+                console.log(a.join("").substring(inicio.i + 1, i))
+            }
+
+        })
+    },
 
     //================================================================================
 
@@ -316,7 +356,7 @@ var AnalizadorSintacticoLR = new Class({
             if (!correcto)
                 return;
 
-            MostrarArbolEventArgs datosEvento = new MostrarArbolEventArgs(arbolSintactico);
+            var datosEvento = new MostrarArbolEventArgs(arbolSintactico);
             MostrarArbol(this, datosEvento);
         }
 

@@ -115,7 +115,29 @@ box-shadow: 0px -1px 0px #000000;
 }
 
 #salida {
-width: 33%;
+width: 32%;
+background-color: transparent;
+border: none;
+color: #BBB;
+padding: 10px;
+height: 150px;
+outline: none;
+resize: none;
+}
+
+#salida1 {
+width: 32%;
+background-color: transparent;
+border: none;
+color: #BBB;
+padding: 10px;
+height: 150px;
+outline: none;
+resize: none;
+}
+
+#salida2 {
+width: 32%;
 background-color: transparent;
 border: none;
 color: #BBB;
