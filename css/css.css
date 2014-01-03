@@ -64,6 +64,7 @@ right: 0;
 	cursor: pointer;
 	box-shadow: inset 0px 1px 2px #303030;
 	-webkit-app-region:no-drag;
+	outline: none;
 }
 
 .boton_w {
