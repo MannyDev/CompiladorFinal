@@ -151,7 +151,7 @@ String.implement({
 
     variablesGlobales: function(){
 
-        var cad = cadena;
+        var cad = this;
 
         cad.contenidoFunciones().each(function(f){
             cad = cad.replace(f,"");
@@ -163,7 +163,7 @@ String.implement({
 
     funciones: function(){
 
-        var cad = cadena;
+        var cad = this;
 
         cad.contenidoFunciones().each(function(f){
             cad = cad.replace(f,"");

@@ -44,9 +44,9 @@ main = function() {
     editor.getSession().setMode("ace/mode/c_cpp");
     editor.setShowPrintMargin(false);
 
-    var salida = document.id("salida");
-    var salida1 = document.id("salida1");
-    var salida2 = document.id("salida2");
+    salida = document.id("salida");
+    salida1 = document.id("salida1");
+    salida2 = document.id("salida2");
 
     var abrir = new ButtonBar("folder_open_icon", "Abrir archivo");
     var nuevo = new ButtonBar("doc_new_icon", "Nuevo archivo");
@@ -106,6 +106,14 @@ main = function() {
 
     var eval = function() {
 
+
+        fn.save({type:"click"})
+
+        if(fn.file == "") {
+            //window.alert("Debe guardar el archivo para poder analizar");
+            return;
+        }
+
         var Analizador = new AnalizadorLexico(editor.getValue().replace(/\#include\s*[\<\"]\w+(\.h)?[\>\"]/g, ""));
         var errores = new Array();
         salida.value = "";
@@ -125,8 +133,6 @@ main = function() {
             }
 
             salida.value += Analizador.simbolo + "\t\t " + Simbolos.ToString(Analizador.tipo) + "\n";
-            salida1.value += Analizador.simbolo + "\t\t " + Simbolos.ToString(Analizador.tipo) + "\n";
-            salida2.value += Analizador.simbolo + "\t\t " + Simbolos.ToString(Analizador.tipo) + "\n";
         }
 
         editor.getSession().setAnnotations(errores);
@@ -134,13 +140,41 @@ main = function() {
         if (errores.length > 0) return;
 
         var Analizador = new AnalizadorSintacticoLR(editor.getValue());
+            
+            if(Analizador.start())
+                new AnalizadorSemantico(fn);
         
+
         // if(Analizador.start().type == "error")
         //     console.log("error");
 
     };
 
-    editor.on("change", eval)
+
+    var openExe = function(){
+
+            var ruta = location.pathname.split("/");
+                ruta.pop();
+                ruta.reverse();
+                ruta.pop();
+                ruta.reverse();
+                ruta = ruta.join("/");
+
+            var rutaFile = fn.file.split("\\");
+            var fileName = rutaFile.pop();
+            var name = fileName.split("\.").reverse().pop();
+                rutaFile = rutaFile.join("/");
+
+            if(fs.existsSync(ruta + "/" + name + ".exe"))
+                gui.Shell.openItem(ruta + "/" + name + ".exe");
+            else 
+                alert("No se encontro codigo ensamblador a ejecutar");
+
+    }
+
+    compilar.addEvent("click", eval)
+
+    ejecutar.addEvent("click", openExe);
 
 
 };

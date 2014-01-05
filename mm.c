@@ -1,6 +1,8 @@
-int x, y;
+int x;
 
 int main(){
+    
+    int y;
     
     x = 3;
     y = 1;

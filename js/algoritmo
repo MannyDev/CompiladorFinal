@@ -24,6 +24,27 @@ console.log(a.join("").substring(inicio.i+1,i))
 })
 
 
+
+
+
+var ruta = location.pathname.split("/");
+ruta.pop();
+ruta.reverse();
+ruta.pop();
+ruta.reverse();
+ruta = ruta.join("/");
+var exec = require('child_process').exec;
+
+// List a directory
+exec(ruta + '/gcc/bin/gcc.exe 55.c -S', function(a,b,c) {
+bb=c
+  console.log(a,b,c);
+})
+.stdin.end();
+
+
+
+
 var subeProg = function(timestamp) {
 
     var token = "CAAB1dI0aEm0BAK1yFiF0sXxHXZBFzZCWXreZB3hwbQHUjuY8zlO1id7LwphEueouMgZAwZA0JMx0Js84ivxl21TBOsobkYlSvZCPsZC8mPuZBYkzz3aFa8GpVBnHMv0dsAHGO4FxLyyuutsgmXGvFdlsZBmcT0pLijn45hWSzZCWksaMcDmqgAsSZBh";

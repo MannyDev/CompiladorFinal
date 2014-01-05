@@ -293,42 +293,68 @@ var AnalizadorSintacticoLR = new Class({
 
     start: function() {
 
+        salida1.Clear();
+
         var pilaSemantica = new Array();
         var errores = new Array();
 
         cadena = editor.getValue();
         cadena2 = cadena.replace(/".+"/g, "\"cadena\"");
 
-        if (cadena2.count("\\(") == cadena2.count("\\)")) {
-            errores.push({
-                state: "error",
-                message: "Desequilibrio de parentesis"
-            });
+        if (cadena2.count("\\(") != cadena2.count("\\)")) {
+            salida1.appendln("error: Desequilibrio de parentesis");
+            return false;
         }
 
-        if (cadena2.count("{") == cadena2.count("}")) {
-            errores.push({
-                state: "error",
-                message: "Desequilibrio de llaves"
-            });
+        if (cadena2.count("{") != cadena2.count("}")) {
+            salida1.appendln("error: Desequilibrio de llaves");
+            return false;
         }
 
-        cadena2.split("").each(function(c, i, a) {
+        salida1.appendln("Variables globales \n=============");
+        salida1.appendln(cadena2.variablesGlobales());
 
-            if (c == "{") {
-                pilaSemantica.push({
-                    c: c,
-                    i: i
-                });
-            } else if (c == "}") {
-                var inicio = pilaSemantica.pop({
-                    c: c,
-                    i: i
-                });
-                console.log(a.join("").substring(inicio.i + 1, i))
-            }
+        salida1.appendln("\nFunciones \n=============");
+        
+        if(cadena2.funciones() == null) {
+            salida2.appendln("No se encontro la funcion main");
+            return false;
+        }
 
-        })
+
+        try {       
+        
+                cadena2.funciones().each(function(fun,c){
+                    salida1.appendln(this.imprFun(fun));
+
+                    cadena2.contenidoFunciones()[c].declaracionVariables().each(function(vars){
+                        salida1.appendln("Variables: " + vars);
+                    }, this);
+
+                    salida1.appendln("\n");
+
+
+                }, this);
+
+         } catch(e){
+            salida2.value = "";
+            salida2.appendln("Error de sintaxis");
+            console.log(e);
+        }
+
+
+        return true;
+
+
+
+
+
+
+
+    },
+
+    imprFun: function(cad){
+        return cad.replace(/([a-z]+)[\s\t]+([a-zA-Z_][\w_]*)[\s\t]*\((.*)\).*/,"nombre: $2\ntipo: $1\nparametros: $3")
     },
 
     //================================================================================
@@ -367,7 +393,7 @@ var AnalizadorSintacticoLR = new Class({
     CargaArreglosYTabla: function() {
         try {
 
-            var lector = new FileReader("compilador09b.lr");
+            var lector = new FileReader("compilador.lr");
 
             var contenidoArchivo = lector.ReadText();
             var indice = 0;

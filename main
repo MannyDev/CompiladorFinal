@@ -21,6 +21,7 @@
 		<script src="js/classes/Pila.js"></script>
 		<script src="js/classes/ElementoPila.js"></script>
 		<script src="js/classes/Nodo.js"></script>
+		<script src="js/classes/AnalizadorSemantico.js"></script>
 		<script src="js/classes/NodoSemantico.js"></script>
 		<script src="js/classes/AnalizadorLexico.js"></script>
 		<script src="js/classes/AnalizadorSintacticoLR.js"></script>
@@ -38,7 +39,7 @@
 		</div>		
 		<div id="consola"><textarea id="salida"></textarea><textarea id="salida1"></textarea><textarea id="salida2"></textarea></div>
 		<pre id="editor"></pre>
-		<div id="status-bar"></div>
+		<div id="status-bar">Creado por: Jose Manuel Vargas Navarro</div>
 	</body>
 
 </html>
